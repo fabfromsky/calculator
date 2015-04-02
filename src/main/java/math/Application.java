@@ -1,102 +1,148 @@
 package main.java.math;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Application {
 
 	public static void main(String[] args) {
-		boolean response;
-		response = true;
+		boolean response = true;
+		Scanner sc = new Scanner(System.in);
+		double a;
+		double b;
+		Calc calc = new Calc();
+		double result;
+		String choices[] = {"Addition", "Soustraction", "Multiplication", "Division", "Carré"};
 		
-		while(response) {
-			System.out.println("Quelle opération souhaitez vous réaliser?");
-			System.out.println("1: addition");
-			System.out.println("2: soustraction");
-			System.out.println("3: multiplication");
-			System.out.println("4: division");
-			System.out.println("5: carré");
+		while(response == true) {
 			
-
-			Calc calc = new Calc();
-					
-			Scanner sc = new Scanner(System.in);
-			int choice = sc.nextInt();
-			int a;
-			int b;
-			float result;
+			boolean isValid = false;
 			
-			switch (choice){
-				case 1:
-					System.out.println("Saisissez le premier chiffre");
-					a = sc.nextInt();
-					System.out.println("Saisissez le chiffre à ajouter");
-					b = sc.nextInt();
-					result = calc.addition(a, b);
-					System.out.println("Le résultat de l'addition de " + a + " et " + b + " est: " + result);
-					break;
+			System.out.println("Quelle opération souhaitez-vous effectuer?");
+			System.out.println("1: "+ choices[0]);
+			System.out.println("2: "+ choices[1]);
+			System.out.println("3: "+ choices[2]);
+			System.out.println("4: "+ choices[3]);
+			System.out.println("5: "+ choices[4]);
 			
-				case 2:
-					System.out.println("Saisissez le premier chiffre");
-					a = sc.nextInt();
-					System.out.println("Saisissez le chiffre à retrancher");
-					b = sc.nextInt();
-					result = calc.substraction(a, b);
-					System.out.println("Le résultat de la soustraction de " + a + " par " + b + " est: " + result);
-					break;
-					
-				case 3:
-					System.out.println("Saisissez le premier chiffre");
-					a = sc.nextInt();
-					System.out.println("Saisissez le multiplicateur");
-					b = sc.nextInt();
-					result = calc.multiplication(a, b);
-					System.out.println("Le résultat de la multiplication de " + a + " par " + b + " est: " + result);
-					break;
+			
+			
+			try {
+				int choice = sc.nextInt();
+				sc.nextLine();
 				
-				case 4:
-					System.out.println("Saisissez le premier chiffre");
-					a = sc.nextInt();
-					System.out.println("Saisissez le diviseur");
-					b = sc.nextInt();
-					if(b != 0) {
-						result = calc.multiplication(a, b);
-						System.out.println("Le résultat de la multiplication de " + a + " par " + b + " est: " + result);
+	
+				if(choice != 0 && choice < 6) {
+					System.out.println("Vous avez choisi l'opération: "+ choices[choice-1]);
+					switch(choice) {
+						case 1: 
+							System.out.println("Saisissez le premier chiffre.");
+							a = sc.nextDouble();
+							System.out.println("Saisissez le chiffre à ajouter.");
+							b = sc.nextDouble();
+							result = calc.addition(a, b);
+							System.out.println("Le résultat de l'addition de "+ a + " et " + b + " est: " + result);
+							break;
+							
+						case 2: 
+							System.out.println("Saisissez le premier chiffre.");
+							a = sc.nextDouble();
+							System.out.println("Saisissez le chiffre à retrancher.");
+							b = sc.nextDouble();
+							result = calc.substraction(a, b);
+							System.out.println("Le résultat de la soustraction de "+ a + " par " + b + " est: " + result);
+							break;
+							
+						case 3:
+							System.out.println("Saisissez le premier chiffre.");
+							a = sc.nextDouble();
+							System.out.println("Saisissez le chiffre à multiplier.");
+							b = sc.nextDouble();
+							result = calc.multiplication(a, b);
+							System.out.println("Le résultat de la mutliplication de "+ a + " par " + b + " est: " + result);
+							break;
+							
+						case 4:
+							try {
+								System.out.println("Saisissez le premier chiffre.");
+								a = sc.nextDouble();
+								System.out.println("Saisissez le diviseur.");
+								b = sc.nextDouble();
+								result = calc.division(a, b);
+								System.out.println("Le résultat de la division de "+ a + " par " + b + " est: " + result);
+							}catch (ArithmeticException e) {
+								System.out.println("Attention, vous essayez de diviser par zero!!");
+							}
+							break;
+							
+						case 5:
+							System.out.println("Saisissez le chiffre dont vous souhaitez connaître le carré.");
+							a = sc.nextDouble();
+							result = calc.square(a);
+							System.out.println("Le carré de " + a + " est: " + result);
+							break;
 					}
-					else {
-						System.out.println("Attention, vous essayez de diviser par zero!!!");
+					sc.nextLine();
+					
+					while (isValid == false){
+						System.out.println("Souhaitez-vous recommencer? (o/n)");
+						char response2 = sc.nextLine().charAt(0);
+						switch(response2) {
+						
+							case 'o': 
+								isValid = true;
+								response = true;
+								break;
+								
+							case 'n':
+								isValid = true;
+								response = false;
+								break;
+							
+							default:
+								System.out.println("Je n'ai pas compris votre réponse");
+								isValid = false;
+								break;
+						}
 					}
-					break;
 					
-				case 5:
-					System.out.println("Saisissez le chiffre dont vous voulez calculer le carré");
-					a = sc.nextInt();
-					result = calc.square(a);
-					System.out.println(a + " au carré est égal à: " + result);
-					break;
 					
-				default:
-					System.out.println("Je n'ai pas saisi votre requète.");
-			}
-			boolean choice2IsValid = false;
-			while (choice2IsValid == false){
-				System.out.println("Souhaitez-vous faire un nouveau calcul? Oui/Non");
-				String replayChoice = sc.nextLine();
-				
-				if(replayChoice == "Non") {
-					response = false;
-					choice2IsValid = true;
 				}
-				else if(replayChoice == "Oui") {
-					choice2IsValid = true;
-				}
-				
 				else {
-					System.out.println("Je ne comprend pas votre réponse!");
+					
+					System.out.println("désolé, votre choix n'est pas compris dans la liste!");
+					while (isValid == false){
+						System.out.println("Souhaitez-vous recommencer? (o/n)");
+						char response2 = sc.nextLine().charAt(0);
+	
+						switch(response2) {
+							case 'o': 
+								response = true;
+								isValid = true;
+								break;
+								
+							case 'n':
+								response = false;
+								isValid = true;
+								break;
+							
+							default:
+								System.out.println("Je n'ai pas compris votre réponse");
+								isValid = false;
+								break;
+						}
+					}
 				}
+			}catch (InputMismatchException e) {
+				System.out.println("Je n'ai pas compris votre réponse.");
+				sc.nextLine();
 			}
-			sc.close();
+			
+			
 		}
-		System.out.println("A bienôt!");
+		sc.close();
+		
+		System.out.println("A bientôt!");
 	}
 }
 

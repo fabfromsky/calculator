@@ -2,7 +2,7 @@ package main.java.math;
 
 /**
  * Class of calcul methods
- * @author fabinthesky
+ * @author fabdoublehesky
  *
  */
 public class Calc {
@@ -13,7 +13,7 @@ public class Calc {
 	 * @param b
 	 * @return sum a + b
 	 */
-	public long addition (long a, long b) {
+	public double addition (double a, double b) {
 		return a + b;
 	}
 	
@@ -23,23 +23,23 @@ public class Calc {
 	 * @param b
 	 * @return difference a - b;
 	 */
-	public long substraction  (long a, long b) {
+	public double substraction  (double a, double b) {
 		return a - b;
 	}
 	
-	public long multiplication (long a, long b) {
+	public double multiplication (double a, double b) {
 		return a * b;
 	}
 	
-	public float division (long a, long b) {
-		return a /b;
+	public double division (double a, double b) {
+		return a / b;
 	}
 	
-	public long square (long a) {
-		return a*a;
+	public double square (double a) {
+		return a * a;
 	}
 	
-//	public float squareroot (long a) {
+//	public float squareroot (double a) {
 //		
 //		return a[i];
 //	}
@@ -57,7 +57,7 @@ public class Calc {
 		return Math.log(a)/log(10);
 	}
 	
-	public float divisionpar2(int a) {
-		return (float)a/2;
+	public double divisionpar2(double a) {
+		return a/2;
 	}
 }
