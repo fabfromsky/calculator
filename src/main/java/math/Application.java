@@ -10,8 +10,10 @@ public class Application {
 		Scanner sc = new Scanner(System.in);
 		double a;
 		double b;
-		Calc calc = new Calc();
 		double result;
+		
+		Calc calc = new Calc();
+		
 		String choices[] = {"Addition", "Soustraction", "Multiplication", "Division", "Carré"};
 		
 		while(response == true) {
@@ -73,7 +75,6 @@ public class Application {
 							}catch (ArithmeticException e) {
 								System.out.println("Attention, vous essayez de diviser par zero!!");
 							}
-							break;
 							
 						case 5:
 							System.out.println("Saisissez le chiffre dont vous souhaitez connaître le carré.");
@@ -104,9 +105,7 @@ public class Application {
 								isValid = false;
 								break;
 						}
-					}
-					
-					
+					}					
 				}
 				else {
 					
@@ -137,8 +136,6 @@ public class Application {
 				System.out.println("Je n'ai pas compris votre réponse.");
 				sc.nextLine();
 			}
-			
-			
 		}
 		sc.close();
 		
