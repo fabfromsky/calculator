@@ -38,27 +38,27 @@ public class Application {
 					System.out.println("Vous avez choisi l'opération: "+ choices[choice-1]);
 					switch(choice) {
 						case 1: 
-							System.out.println("Saisissez le premier chiffre.");
+							System.out.println("Saisissez le premier nombre.");
 							a = sc.nextDouble();
-							System.out.println("Saisissez le chiffre à ajouter.");
+							System.out.println("Saisissez le nombre à ajouter.");
 							b = sc.nextDouble();
 							result = calc.addition(a, b);
 							System.out.println("Le résultat de l'addition de "+ a + " et " + b + " est: " + result);
 							break;
 							
 						case 2: 
-							System.out.println("Saisissez le premier chiffre.");
+							System.out.println("Saisissez le premier nombre.");
 							a = sc.nextDouble();
-							System.out.println("Saisissez le chiffre à retrancher.");
+							System.out.println("Saisissez le nombre à retrancher.");
 							b = sc.nextDouble();
 							result = calc.substraction(a, b);
 							System.out.println("Le résultat de la soustraction de "+ a + " par " + b + " est: " + result);
 							break;
 							
 						case 3:
-							System.out.println("Saisissez le premier chiffre.");
+							System.out.println("Saisissez le premier nombre.");
 							a = sc.nextDouble();
-							System.out.println("Saisissez le chiffre à multiplier.");
+							System.out.println("Saisissez le nombre à multiplier.");
 							b = sc.nextDouble();
 							result = calc.multiplication(a, b);
 							System.out.println("Le résultat de la mutliplication de "+ a + " par " + b + " est: " + result);
@@ -66,7 +66,7 @@ public class Application {
 							
 						case 4:
 							try {
-								System.out.println("Saisissez le premier chiffre.");
+								System.out.println("Saisissez le premier nombre.");
 								a = sc.nextDouble();
 								System.out.println("Saisissez le diviseur.");
 								b = sc.nextDouble();
@@ -77,7 +77,7 @@ public class Application {
 							}
 							
 						case 5:
-							System.out.println("Saisissez le chiffre dont vous souhaitez connaître le carré.");
+							System.out.println("Saisissez le nombre dont vous souhaitez connaître le carré.");
 							a = sc.nextDouble();
 							result = calc.square(a);
 							System.out.println("Le carré de " + a + " est: " + result);
